@@ -1,4 +1,5 @@
 const core = require('@actions/core');
+const github = require('@actions/github');
 
 const getEnvUrl = require('./utils/getEnvUrl');
 const waitForHealthy = require('./utils/waitForHealthy');
@@ -7,7 +8,7 @@ let env;
 let timeout;
 
 try {
-  env = core.getInput('environment') || getEnvUrl();
+  env = core.getInput('environment') || getEnvUrl(github.context.payload.pull_request.head.ref);
   timeout = core.getInput('timeout');
 } catch (error) {
   core.setFailed(error.message);
