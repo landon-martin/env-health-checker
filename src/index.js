@@ -1,6 +1,6 @@
 const core = require('@actions/core')
 const github = require('@actions/github')
-const _ = require('lodash');
+const _ = require('lodash')
 
 const getEnvUrl = require('./utils/getEnvUrl')
 const waitForHealthy = require('./utils/waitForHealthy')
