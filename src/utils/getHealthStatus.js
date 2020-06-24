@@ -4,7 +4,7 @@ module.exports = async (envUrl) => {
   let ready = true
 
   console.log(`Checking health for: ${envUrl}`)
-  const res = await request.get(`https://health.${envUrl}`, { json: true })
+  const res = await request.get(`https://health.${envUrl}`, { json: true, rejectUnauthorized: false })
   console.log(JSON.stringify(res))
 
   for (const service in res.services) {
