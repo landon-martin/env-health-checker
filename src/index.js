@@ -1,11 +1,12 @@
 const core = require('@actions/core');
 
-const getUrl = require('./utils/getUrl');
+const getHealthUrl = require('./utils/getHealthUrl');
+const waitForHealthy = require('./utils/waitForHealthy');
 
 try {
-  const env = core.getInput('environment') || getUrl();
+  const url = core.getInput('url') || getHealthUrl();
   const timeout = core.getInput('timeout');
-
+  waitForHealthy(url, timeout);
 } catch (error) {
   core.setFailed(error.message);
 }

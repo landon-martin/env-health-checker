@@ -19,4 +19,5 @@ jobs:
       - name: Wait for Environment
         uses: ./
         with:
+          url: 'staging.alpha.bluescape.io'
           timeout: 6
