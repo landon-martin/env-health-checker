@@ -3,15 +3,18 @@ const core = require('@actions/core');
 const getEnvUrl = require('./utils/getEnvUrl');
 const waitForHealthy = require('./utils/waitForHealthy');
 
-try {
-  const env = core.getInput('environment') || getEnvUrl();
-  const timeout = core.getInput('timeout');
+let env;
+let timeout;
 
-  waitForHealthy(env, timeout).then(() => {
-    console.log('Environment is healthy!');
-  }).catch((e) => {
-    throw e;
-  });
+try {
+  env = core.getInput('environment') || getEnvUrl();
+  timeout = core.getInput('timeout');
 } catch (error) {
   core.setFailed(error.message);
 }
+
+waitForHealthy(env, timeout).then(() => {
+  console.log('Environment is healthy!');
+}).catch((error) => {
+  core.setFailed(error.message);
+});
