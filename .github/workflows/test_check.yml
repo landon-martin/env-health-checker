@@ -19,5 +19,5 @@ jobs:
       - name: Wait for Environment
         uses: ./
         with:
-          coverage-command: 'ls'
-          product: 'testing'
+          environment: 'staging.alpha.bluescape.io'
+          timeout: 1
