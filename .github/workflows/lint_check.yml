@@ -1,9 +1,9 @@
-name: Jest Tests
+name: Lint Check
 
 on: [pull_request]
 
 jobs:
-  jest:
+  eslint:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
@@ -19,8 +19,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Jest and Coverage
-      uses: landon-martin/code-coverage-commenter@v0.0.8
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        coverage-command: "npm run test -- --coverage"
+    - name: Lint
+      run: |
+        npm run lint
