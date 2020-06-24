@@ -20,4 +20,4 @@ jobs:
         uses: ./
         with:
           environment: 'staging.alpha.bluescape.io'
-          timeout: 6
+          timeout: 1

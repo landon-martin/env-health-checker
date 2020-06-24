@@ -13,7 +13,10 @@ try {
   core.setFailed(error.message);
 }
 
-waitForHealthy(env, timeout).then(() => {
+waitForHealthy(env, timeout).then((ready) => {
+  if (!ready) {
+    throw Error('Environment was not ready in time');
+  }
   console.log('Environment is healthy!');
 }).catch((error) => {
   core.setFailed(error.message);
