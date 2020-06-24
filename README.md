@@ -16,7 +16,7 @@ Before a precommit, run a health check on the environment.
 ```yaml
 name: E2E Precommit Testing
 
-on: [pull_request]
+on: [deployment, pull_request]
 
 jobs:
   npm_setup:

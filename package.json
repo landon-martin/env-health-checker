@@ -21,6 +21,7 @@
     "@actions/core": "^1.2.4",
     "@actions/github": "^3.0.0",
     "eslint-plugin-jest": "^23.17.1",
+    "lodash": "^4.17.15",
     "request": "^2.88.2",
     "request-promise": "^4.2.5"
   },

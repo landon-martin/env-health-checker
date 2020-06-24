@@ -1,5 +1,5 @@
 module.exports = (branchName) => {
-  if (!branchName) {
+  if (!branchName || typeof branchName !== 'string') {
     throw Error('Branch name is not defined, cant find environment url')
   }
   const jiraRegex = '[a-zA-Z]+-[0-9]{1,5}'

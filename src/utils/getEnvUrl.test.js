@@ -22,3 +22,8 @@ test('No branch name throws error', () => {
   const branchName = ''
   expect(() => getEnvUrl(branchName)).toThrow()
 })
+
+test('Object branch name throws error', () => {
+  const branchName = {}
+  expect(() => getEnvUrl(branchName)).toThrow()
+})

@@ -1,5 +1,6 @@
 const core = require('@actions/core')
 const github = require('@actions/github')
+const _ = require('lodash')
 
 const getEnvUrl = require('./utils/getEnvUrl')
 const waitForHealthy = require('./utils/waitForHealthy')
@@ -8,7 +9,8 @@ let env
 let timeout
 
 try {
-  env = core.getInput('environment') || getEnvUrl(github.context.payload.pull_request.head.ref)
+  const branchName = _.get(github.context, ['payload', 'pull_request', 'head', 'ref']) || _.get(github.context, ['ref'])
+  env = core.getInput('environment') || getEnvUrl(branchName)
   timeout = core.getInput('timeout')
 } catch (error) {
   core.setFailed(error.message)
