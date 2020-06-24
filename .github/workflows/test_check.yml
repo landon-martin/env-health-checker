@@ -1,6 +1,7 @@
 name: Verify Action
 
 on:
+  deployment:
   pull_request:
     branches: [develop]
 
