@@ -1,0 +1,27 @@
+name: Precommit Tests
+
+on: [pull_request]
+
+jobs:
+  build:
+    name: precommit_check
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm # npm cache files are stored here on Linux/macOS
+        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Jest and Coverage
+      uses: landon-martin/code-coverage-commenter@v0.0.8
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        coverage-command: "npm run test -- --coverage"
