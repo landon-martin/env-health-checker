@@ -5,7 +5,7 @@ This GitHub Action plugin will poll the health endpoint of a Bluescape Environme
 
 ## Usage
 ### Pre-requisites
-Create a workflow `.yml` file in your `.github/workflows` directory. An [example workflow](https://github.com/landon-martin/code-coverage-commenter/new/develop?readme=1#example-workflow) is available below. For more information, reference the GitHub Help Documentation for [Creating a workflow file](https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file).
+Create a workflow `.yml` file in your `.github/workflows` directory. An example workflow is available below. For more information, reference the GitHub Help Documentation for [Creating a workflow file](https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file).
 
 ### Inputs
 - `environment` (optional): The domain of the environment to wait on. Ex. staging.alpha.bluescape.com
