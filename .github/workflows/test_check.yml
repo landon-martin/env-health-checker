@@ -20,4 +20,3 @@ jobs:
         uses: ./
         with:
           timeout: 6
-          environment: 'testing.com'
