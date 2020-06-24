@@ -1,0 +1,14 @@
+name: 'Environment Health Checker'
+description: 'Waits until a Bluescape environment '
+inputs:
+  environment:
+    description: 'The domain of the bluescape environment, this wil be auto-generated based on the branch if not defined.'
+    default: uat1.bluescape.com
+    require: false
+  timeout:
+    description: 'The length of time to wait for the environment, in minutes.'
+    default: 5
+    required: false
+runs:
+  using: 'node12'
+  main: 'index.js'
