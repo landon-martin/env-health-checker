@@ -1,10 +1,9 @@
-name: Precommit Tests
+name: Jest Tests
 
 on: [pull_request]
 
 jobs:
-  build:
-    name: precommit_check
+  jest:
     runs-on: ubuntu-18.04
     strategy:
       matrix:

@@ -1,0 +1,24 @@
+name: Lint Check
+
+on: [pull_request]
+
+jobs:
+  eslint:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm # npm cache files are stored here on Linux/macOS
+        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Lint
+      run: |
+        npm run lint
