@@ -25,3 +25,12 @@ test('Overall ok being false, makes health false', async () => {
   const health = await getHealthStatus(url)
   expect(health).toEqual(false)
 })
+
+test('Request throwing an error, makes health false', async () => {
+  const url = 'staging.alpha.bluescape.io'
+  jest.spyOn(rp, 'get').mockImplementation(() => {
+    throw Error()
+  })
+  const health = await getHealthStatus(url)
+  expect(health).toEqual(false)
+})
