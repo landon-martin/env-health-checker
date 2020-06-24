@@ -5,5 +5,5 @@ module.exports = () => {
   const jiraRegex = '[a-zA-Z]+-[0-9]{1,5}';
   const branchParts = branchName.split('/');
   const jira = branchParts.filter((part) => part.match(jiraRegex));
-  return `health.${jira}.alpha.bluescape.io`;
+  return `${jira}.alpha.bluescape.io`;
 };
