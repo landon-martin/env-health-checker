@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 10.x
       - name: Wait For Environment to be healthy
-        uses: landon-martin/env-health-checker@v1.0.1
+        uses: landon-martin/env-health-checker@v1.0.4
         with:
           environment: staging.alpha.bluescape.io
           timeout: 10
