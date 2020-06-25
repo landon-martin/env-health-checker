@@ -18,6 +18,11 @@ test('Middle nested JIRA branch name works', () => {
   expect(url).toEqual('qaa-123.alpha.bluescape.io')
 })
 
+test('No matching name throws error', () => {
+  const branchName = 'testbranch'
+  expect(() => getEnvUrl(branchName)).toThrow()
+})
+
 test('No branch name throws error', () => {
   const branchName = ''
   expect(() => getEnvUrl(branchName)).toThrow()
