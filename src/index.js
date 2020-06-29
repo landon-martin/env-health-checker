@@ -11,6 +11,11 @@ let timeout
 try {
   const branchName = _.get(github.context, ['payload', 'pull_request', 'head', 'ref']) || _.get(github.context, ['ref'])
   env = core.getInput('environment') || getEnvUrl(branchName)
+  const outputVar = core.getInput('output-variable')
+  // Set the environment variable to be exported
+  if (outputVar) {
+    core.exportVariable(outputVar, env)
+  }
   timeout = core.getInput('timeout')
 } catch (error) {
   core.setFailed(error.message)

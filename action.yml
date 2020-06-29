@@ -2,7 +2,10 @@ name: 'Environment Health Checker'
 description: 'Waits until a Bluescape environment '
 inputs:
   environment:
-    description: 'The url of the bluescape environment, ie. apps.us.bluescape.com. This wil be auto-generated based on the branch if not defined.'
+    description: 'The url of the Bluescape environment, ie. apps.us.bluescape.com. This wil be auto-generated based on the branch if not defined.'
+    required: false
+  output-variable:
+    description: 'The name of the environment variable to set with the value of the Bluescape environment found'
     required: false
   timeout:
     description: 'The length of time to wait for the environment, in minutes.'
