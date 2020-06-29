@@ -8,7 +8,7 @@ module.exports = async (envUrl) => {
   try {
     res = await request.get(`https://health.${envUrl}`, { json: true, rejectUnauthorized: false })
   } catch (e) {
-    console.error('Reqest failed')
+    console.error('Request failed')
     return false
   }
   console.log(JSON.stringify(res))
