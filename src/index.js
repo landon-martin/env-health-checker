@@ -29,7 +29,7 @@ if (isNetlify === 'true') {
     core.setFailed(error.message)
   }
 
-  waitForSha(env, github.context.sha, timeout).then((ready) => {
+  waitForSha(env, github.context.event.after, timeout).then((ready) => {
     if (!ready) {
       throw Error('Environment was not ready in time')
     }
