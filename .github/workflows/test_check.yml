@@ -23,6 +23,7 @@ jobs:
           environment: 'staging.alpha.bluescape.io'
           output-variable: BLUESCAPE_URL
           timeout: 1
+          is-netlify: false
       - name: Check that variable is available
         run: |
           if [ -z "$BLUESCAPE_URL" ]; then
