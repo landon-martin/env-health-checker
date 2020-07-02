@@ -28,6 +28,7 @@ if (isNetlify === 'true') {
   } catch (error) {
     core.setFailed(error.message)
   }
+  console.log(github.context)
 
   waitForSha(env, github.context.event.after, timeout).then((ready) => {
     if (!ready) {
