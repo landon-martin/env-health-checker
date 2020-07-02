@@ -11,9 +11,8 @@ module.exports = async (envUrl, sha) => {
     console.error('Request failed')
     return false
   }
-  console.log(JSON.stringify(res))
-
   if (res.gitSha !== sha) {
+    console.log(`Sha doesn't match: ${res.gitSha} != ${sha}`)
     return false
   }
   return true

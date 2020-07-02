@@ -11,7 +11,6 @@ module.exports = async (envUrl) => {
     console.error('Request failed')
     return false
   }
-  console.log(JSON.stringify(res))
 
   for (const service in res.services) {
     if (!res.services[service].ok) {
