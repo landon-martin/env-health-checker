@@ -13,14 +13,14 @@ const outputVar = core.getInput('output-variable')
 const timeout = core.getInput('timeout')
 const isNetlify = core.getInput('is-netlify')
 
-if (isNetlify) {
+if (isNetlify === 'true') {
   const prNum = github.context.payload.number
   try {
     const baseEnv = core.getInput('environment')
     if (!baseEnv) {
       throw Error('environment is required if is-netlify is true')
     }
-    const env = getNetlifyEnvUrl(prNum, baseEnv)
+    env = getNetlifyEnvUrl(prNum, baseEnv)
     // Set the environment variable to be exported
     if (outputVar) {
       core.exportVariable(outputVar, env)
@@ -33,7 +33,7 @@ if (isNetlify) {
     if (!ready) {
       throw Error('Environment was not ready in time')
     }
-    console.log('Environment is healthy!')
+    console.log('Environment is up to date!')
   }).catch((error) => {
     core.setFailed(error.message)
   })
@@ -41,7 +41,7 @@ if (isNetlify) {
   const branchName = _.get(github.context, ['payload', 'pull_request', 'head', 'ref']) || _.get(github.context, ['ref'])
 
   try {
-    const env = core.getInput('environment') || getAlphaEnvUrl(branchName)
+    env = core.getInput('environment') || getAlphaEnvUrl(branchName)
     // Set the environment variable to be exported
     if (outputVar) {
       core.exportVariable(outputVar, env)
