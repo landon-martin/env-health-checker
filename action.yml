@@ -11,6 +11,10 @@ inputs:
     description: 'The length of time to wait for the environment, in minutes.'
     default: 5
     required: false
+  is-netlify:
+    description: 'Toggle the ability to specify a netlify environment checks'
+    required: false
+    default: false
 runs:
   using: 'node12'
   main: 'src/index.js'
