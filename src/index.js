@@ -13,8 +13,6 @@ const outputVar = core.getInput('output-variable')
 const timeout = core.getInput('timeout')
 const isNetlify = core.getInput('is-netlify')
 
-console.log(github.context)
-
 if (isNetlify === 'true') {
   const prNum = github.context.payload.number
   try {
@@ -31,7 +29,7 @@ if (isNetlify === 'true') {
     core.setFailed(error.message)
   }
 
-  waitForSha(env, github.context.event.after, timeout).then((ready) => {
+  waitForSha(env, github.context.payload.after, timeout).then((ready) => {
     if (!ready) {
       throw Error('Environment was not ready in time')
     }
