@@ -12,10 +12,8 @@ let env
 const outputVar = core.getInput('output-variable')
 const timeout = core.getInput('timeout')
 const isNetlify = core.getInput('is-netlify')
-console.log(typeof isNetlify)
-console.log(isNetlify)
 
-if (isNetlify) {
+if (isNetlify === 'true') {
   const prNum = github.context.payload.number
   try {
     const baseEnv = core.getInput('environment')
