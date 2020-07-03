@@ -5,7 +5,7 @@ module.exports = async (url, sha, timeout) => {
   const startTime = Date.now()
 
   if (!sha) {
-    throw Error('Sha is not defined')
+    throw Error('Sha is not defined from github context')
   }
 
   while (Date.now() < startTime + timeout * 60000 && !ready) {
