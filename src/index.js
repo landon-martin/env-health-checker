@@ -28,7 +28,7 @@ if (isNetlify === 'true') {
   } catch (error) {
     core.setFailed(error.message)
   }
-  const sha = _.get(github.context, ['payload', 'after']) || _.get(github.context, ['event', 'pull_request', 'head', 'sha'])
+  const sha = _.get(github.context, ['payload', 'after']) || _.get(github.context, ['payload', 'pull_request', 'head', 'sha'])
   waitForSha(env, sha, timeout).then((ready) => {
     if (!ready) {
       throw Error('Environment was not ready in time')
