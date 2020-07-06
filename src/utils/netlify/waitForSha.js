@@ -12,6 +12,7 @@ module.exports = async (url, sha, timeout) => {
 
   while (Date.now() < startTime + timeout * 60000 && !ready) {
     ready = await getSha(url, sha)
+    await new Promise(resolve => setTimeout(resolve, 15000))
   }
   return ready
 }

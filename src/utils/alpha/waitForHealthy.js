@@ -6,6 +6,7 @@ module.exports = async (url, timeout) => {
 
   while (Date.now() < startTime + timeout * 60000 && !ready) {
     ready = await getHealthStatus(url)
+    await new Promise(resolve => setTimeout(resolve, 15000))
   }
   return ready
 }
