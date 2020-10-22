@@ -20,7 +20,7 @@ jobs:
       - name: Wait for Environment
         uses: ./
         with:
-          environment: 'staging.alpha.bluescape.io'
+          environment: 'apps.us.bluescape.com'
           output-variable: BLUESCAPE_URL
           timeout: 1
       - name: Check that variable is available
