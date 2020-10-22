@@ -1,6 +1,6 @@
 {
   "name": "env-health-checker",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Waits for a Bluescape Environment to be up and healthy.",
   "main": "index.js",
   "scripts": {
