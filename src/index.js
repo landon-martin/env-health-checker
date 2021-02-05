@@ -4,8 +4,6 @@ const _ = require('lodash')
 
 const getAlphaEnvUrl = require('./utils/alpha/getEnvUrl')
 const waitForHealthy = require('./utils/alpha/waitForHealthy')
-
-const getNetlifyEnvUrl = require('./utils/netlify/getEnvUrl')
 const waitForSha = require('./utils/netlify/waitForSha')
 
 let env
@@ -13,15 +11,15 @@ const outputVar = core.getInput('output-variable')
 const timeout = core.getInput('timeout')
 const isNetlify = core.getInput('is-netlify')
 const netlifyService = core.getInput('netlify-service')
+const netlifySuffix = core.getInput('netlify-suffix')
 
 if (isNetlify === 'true') {
-  const prNum = github.context.payload.number
   try {
     const baseEnv = core.getInput('environment')
     if (!baseEnv) {
       throw Error('environment is required if is-netlify is true')
     }
-    env = getNetlifyEnvUrl(prNum, baseEnv)
+    env = netlifySuffix ? `${baseEnv}/${netlifySuffix}` : baseEnv
     // Set the environment variable to be exported
     if (outputVar) {
       core.exportVariable(outputVar, env)
