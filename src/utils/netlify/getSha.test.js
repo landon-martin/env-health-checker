@@ -11,7 +11,7 @@ test('Git sha matches, returns true', async () => {
     gitSha: '213'
   }
   jest.spyOn(rp, 'get').mockReturnValue(response)
-  const health = await getSha(url, sha)
+  const health = await getSha(url, sha, 'netlify')
   expect(health).toEqual(true)
 })
 
@@ -24,6 +24,6 @@ test('Git sha doesnt match, returns false', async () => {
     gitSha: '213'
   }
   jest.spyOn(rp, 'get').mockReturnValue(response)
-  const health = await getSha(url, sha)
+  const health = await getSha(url, sha, 'netlify')
   expect(health).toEqual(false)
 })
