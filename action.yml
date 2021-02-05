@@ -15,6 +15,13 @@ inputs:
     description: 'Toggle the ability to specify a netlify environment checks'
     required: false
     default: false
+  netlify-service:
+    description: 'Change which micro-service to check for the version in a netlify hosting'
+    required: false
+    default: 'netlify'
+  netlify-suffix:
+    description: 'The location where you netlify env would be hosted, such as a pr number'
+    required: false
 runs:
   using: 'node12'
   main: 'src/index.js'
