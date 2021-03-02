@@ -1,5 +1,7 @@
 # env-health-checker
 
+## DEPRECATED by Bluescape/wait-for-env-action - https://github.com/Bluescape/wait-for-env-action
+
 ## Description
 This GitHub Action plugin will poll the health endpoint of a Bluescape Environment the environment is ready, or the timeout is hit.
 
